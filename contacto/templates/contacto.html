@@ -1,0 +1,62 @@
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block css %}<link rel="stylesheet" href="{% static 'css/styleContacto.css' %}">{% endblock %}
+    {% block title %}Comicstore - Contacto{% endblock %}
+    {% block content %}
+    <div class="container spacer mb-5" style="padding-botttom: 4.5%; padding-top: 4.5%;">
+        <h1 class="text-center">Contacto</h1>
+        <div class="row spacer">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="tituloInput" class="form-label">Titulo</label>
+                    <input type="text" class="form-control" id="tituloInput">
+                </div>
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="consultaSelect" class="form-label">Consulta</label>
+                    <select class="form-select" id="consultaSelect">
+                        <option selected disabled>Selecciona una opción</option>
+                        <option value="problema_pedido">Problema con mi pedido</option>
+                        <option value="problema_despacho">Problema con el despacho</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="textArea1" class="form-label">Servicio a realizar</label>
+                    <textarea class="form-control" id="textArea1" rows="3"></textarea>
+                    <div class="text-center">
+                        <button id="enviar" type="submit" class="btn btn-dark mt-3 spacer">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal HTML -->
+<div class="modal" id="successModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Contacto</h5>
+            </div>
+            <div class="modal-body">
+                <p>Hemos recibido su mensaje. Le contactaremos a la brevedad.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'contacto' %}" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/contacto.js' %}"></script>
+{% endblock %}

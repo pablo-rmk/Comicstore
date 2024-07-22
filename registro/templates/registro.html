@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/styleRegistro.css' %}">{% endblock %}
+{% block title %}Comicstore - Contacto{% endblock %}
+{% block content %}
+<div>
+    <form class="formulario mb-5" method="post">
+        <h1>¡Bienvenido!</h1>
+        <h4>Registro de nuevo usuario</h4>
+                {% csrf_token %}    
+                {{ form.as_div }}
+        <div class="text-center mt-3">
+            <button id="registrar" type="submit" class="btn btn-primary">Registrarse</button>
+        </div>        
+        <div>
+            <h6>¿Ya tienes una cuenta? <a href="{% url 'login' %}"><u>Ingresa aquí</u></a></h4>
+        </div>
+    </form>
+</div>
+
+<input type="hidden" id="registro-exitoso-indicador" value="{% if registro_exitoso %}true{% else %}false{% endif %}">
+<!-- Modal HTML -->
+<div class="modal" id="successModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registro Exitoso</h5>
+            </div>
+            <div class="modal-body">
+                <p>Su registro se ha completado con éxito.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'login' %}" type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'js/registrar.js' %}"></script>
+{% endblock %}
+    

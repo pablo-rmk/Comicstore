@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/listar.css' %}">{% endblock %}
+{% block title %}Comicstore - Listar{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <div class="row mb-3">
+        <div class="col-8">
+            <h1>Lista Comics</h1>
+        </div>
+        <div class="col-4">
+            <a href="{% url 'crear' %}" class="btn btn-primary float-end">Crear Comic</a> 
+        </div>
+
+        </div class="table-responsive">
+            <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Id</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comic in comics %}
+            <tr class="text-center">
+                <td class="align-middle">{{ comic.id }}</td>
+                <td class="align-middle">{{ comic.title }}</td>
+                <td class="align-middle">{{ comic.price }}</td>
+                <td class="text-center"><img class="thumbnail" src="{{ comic.img_path }}" alt=""></td>
+                <td class="align-middle"><a href="{% url 'editar' comic.id %}"><i class="fa-regular fa-pen-to-square fa-2x"></i></a></td>
+                <td class="align-middle"><a href="{% url 'eliminar' comic.id %}" onclick="return confirm('¿Estás seguro de que quieres eliminar este cómic?');"><i class="fa-regular fa-trash-can fa-2x"></i></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <div>
+
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'js/listar.js' %}"></script>
+{% endblock %}
+
+

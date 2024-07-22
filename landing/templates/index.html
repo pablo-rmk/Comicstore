@@ -1,0 +1,101 @@
+{% extends 'base.html'%}
+{% load static %} 
+{% block title %}Comic Store{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/styleIndex.css' %}">{% endblock %} 
+{% block content %}
+<div id="carouselExample" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="4000">
+            <img src="{% static 'img/foto 1.jpg' %}" class="d-block w-100 carrusel" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+            <img src="{% static 'img/Banner2.jpg' %}" class="d-block w-100 carrusel" alt="...">
+            <p class="texto1">¡BIENVENIDO A COMIC STORE!</p>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+            <img src="{% static 'img/Banner3.jpg' %}" class="d-block w-100 carrusel" alt="...">
+            <p class="texto2">Ingresa el código<span class="codigo">COMICSTORE1</span> y obtén un 10% de descuento en tu primera compra!</p>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="galeria container-fluid pt-5 pb-2 text-center">
+    <p class="titulo">¡Recién llegados!</p>
+    <div id="comics" class="row">
+    {% if comics %}
+        {% for comic in comics %}
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-3">
+                <div class="card h-100">
+                    <img src="{{ comic.img_path }}" class="card-img-top" alt="..." style="max-height: 624.88px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ comic.title }}</h5>
+                        <p class="card-text">${{ comic.price }}</p>
+                    </div>
+                    <div class="d-grid">
+                        <!-- Dentro del bucle for de los cómics -->
+                        <button class="btn btn-dark btn-block" onclick="location.href='{% url 'producto' %}?id={{ comic.id }}'">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="navbar-pagination">
+      <ul class="pagination justify-content-center mb-0">
+        {% if comics.has_previous %}
+          <li class="page-item mb-3">
+            <a class="page-link" href="?page=1#comics" aria-label="First">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ comics.previous_page_number }}#comics" aria-label="Previous">
+              <span aria-hidden="true">&lsaquo;</span>
+            </a>
+          </li>
+        {% endif %}
+    
+        {% for num in comics.paginator.page_range %}
+          <li class="page-item {% if num == comics.number %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}#comics">{{ num }}</a>
+          </li>
+        {% endfor %}
+    
+        {% if comics.has_next %}
+          <li class="page-item mb-3">
+            <a class="page-link" href="?page={{ comics.next_page_number }}#comics" aria-label="Next">
+              <span aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ comics.paginator.num_pages }}#comics" aria-label="Last">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    
+    
+
+    
+
+    
+    
+      
+    
+    {% else %}
+        <p>No hay comics disponibles.</p>
+    {% endif %}
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
