@@ -92,7 +92,7 @@ PruebaDesarrolloWeb3/
 
 # API de Registro de Ubicaciones
 
-Esta API permite poblar los select de país, región y comuna en el formulario de registro de tu proyecto. A continuación se detallan los endpoints disponibles.
+Esta API permite poblar los select de país, región y comuna en el formulario de registro del proyecto. A continuación se detallan los endpoints disponibles.
 
 ## Endpoints
 
