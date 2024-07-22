@@ -1,4 +1,6 @@
-# PruebaDesarrolloWeb3 - Tienda de Comics en Línea
+# Tienda de Comics en Línea
+
+Este proyecto se realizó como parte de la evaluación de la asignatura Desarrollo Web, para la carrera Analista Programador Computacional, Duoc UC.
 
 ## Descripción del Proyecto
 
