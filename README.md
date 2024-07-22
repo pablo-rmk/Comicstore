@@ -46,7 +46,7 @@ PruebaDesarrolloWeb3/
 
 * **`carrito/`, `comicstore/`, `contacto/`, etc.:** Aplicaciones Django que manejan la lógica y vistas de cada sección de la tienda.
 * **`cargar_comics.py`, `cargar_comunas.py`, `cargar_regiones.py`:** Scripts para cargar datos iniciales desde archivos CSV y JSON.
-* **`comics.csv`, `comunas.csv`:** Archivos de datos que contienen información sobre cómics, comunas y regiones.
+* **`comics.csv`, `comunas.csv`:** Archivos de datos que contienen información sobre cómics y comunas.
 * **`db.sqlite3`:** Base de datos SQLite que almacena los datos de la aplicación.
 * **`manage.py`:** Interfaz de línea de comandos para administrar el proyecto Django.
 * **`regiones.json`:** Archivo de datos que contiene información sobre regiones.
